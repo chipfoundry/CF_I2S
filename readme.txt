@@ -1,7 +1,8 @@
 /*
-	Copyright 2024 Efabless Corp.
+	Copyright 2024-2025 ChipFoundry, a DBA of Umbralogic Technologies LLC.
 
-	Author: Efabless Corp. (ip_admin@efabless.com)
+	Original Copyright 2024 Efabless Corp.
+	Author: ChipFoundry Corp. (ip_admin@efabless.com)
 
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
@@ -17,26 +18,26 @@
 
 */
 
-IP_name: EF_I2S
-Author: Efabless
+IP_name: CF_I2S
+Author: ChipFoundry
 Directory Structure:
 
     - fw 
-        - **EF_I2S_regs.h**: Header file containing the register definitions for the EF_I2S interface.
+        - **CF_I2S_regs.h**: Header file containing the register definitions for the CF_I2S interface.
 
     - hdl 
         - rtl 
-            - **EF_I2S.v**: Verilog source code for the EF_I2S design
+            - **CF_I2S.v**: Verilog source code for the CF_I2S design
             - **bus_wrappers**
-                - **EF_I2S_AHBL.v**: Verilog wrapper to interface the EF_I2S with the AMBA High-performance Bus (AHB-Lite) protocol.
-                - **EF_I2S_APB.v**: Verilog wrapper to interface the EF_I2S with the Advanced Peripheral Bus (APB) protocol.
-                - **EF_I2S_WB.v**: Verilog wrapper to interface the EF_I2S with the Wishbone bus protocol.
+                - **CF_I2S_AHBL.v**: Verilog wrapper to interface the CF_I2S with the AMBA High-performance Bus (AHB-Lite) protocol.
+                - **CF_I2S_APB.v**: Verilog wrapper to interface the CF_I2S with the Advanced Peripheral Bus (APB) protocol.
+                - **CF_I2S_WB.v**: Verilog wrapper to interface the CF_I2S with the Wishbone bus protocol.
             - **dft**
-                - **EF_I2S_AHBL_DFT.v**: Verilog wrapper with Design for Test (DFT) support specific to the AHB-Lite interface of the EF_I2S .
-                - **EF_I2S_APB_DFT.v**: Verilog wrapper with DFT support specific to the APB interface of the EF_I2S.
-                - **EF_I2S_WB_DFT.v**: Verilog wrapper with DFT support specific to the Wishbone interface of the EF_I2S.
+                - **CF_I2S_AHBL_DFT.v**: Verilog wrapper with Design for Test (DFT) support specific to the AHB-Lite interface of the CF_I2S .
+                - **CF_I2S_APB_DFT.v**: Verilog wrapper with DFT support specific to the APB interface of the CF_I2S.
+                - **CF_I2S_WB_DFT.v**: Verilog wrapper with DFT support specific to the Wishbone interface of the CF_I2S.
 
     - ip 
         - **dependencies.json**: Used by IPM [Do NOT EDIT OR DELETE].
     
-    - **EF_I2S.pdf**: Comprehensive documentation for the EF_I2S, including its features, configuration, and usage.
+    - **CF_I2S.pdf**: Comprehensive documentation for the CF_I2S, including its features, configuration, and usage.

@@ -1,13 +1,14 @@
 /*
-	Copyright 2025 Efabless Corp.
+	Copyright 2024-2025 ChipFoundry, a DBA of Umbralogic Technologies LLC.
 
+	Original Copyright 2024 Efabless Corp.
 	Author: Efabless Corp. (ip_admin@efabless.com)
 
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
 
-	    www.apache.org/licenses/LICENSE-2.0
+	    http://www.apache.org/licenses/LICENSE-2.0
 
 	Unless required by applicable law or agreed to in writing, software
 	distributed under the License is distributed on an "AS IS" BASIS,
@@ -26,7 +27,7 @@
 
 `include			"wb_wrapper.vh"
 
-module EF_I2S_WB #( 
+module CF_I2S_WB #( 
 	parameter	
 		DW = 32,
 		AW = 4
@@ -35,7 +36,6 @@ module EF_I2S_WB #(
 	inout VPWR,
 	inout VGND,
 `endif
-	input	wire	sc_testmode,
 	`WB_SLAVE_PORTS,
 	output	wire	[1-1:0]	ws,
 	output	wire	[1-1:0]	sck,
@@ -59,8 +59,8 @@ module EF_I2S_WB #(
     reg [0:0] GCLK_REG;
     wire clk_g;
 
-    wire clk_gated_en = sc_testmode ? 1'b1 : GCLK_REG[0];
-    ef_util_gating_cell clk_gate_cell(
+    wire clk_gated_en = GCLK_REG[0];
+    cf_util_gating_cell clk_gate_cell(
         `ifdef USE_POWER_PINS 
         .vpwr(VPWR),
         .vgnd(VGND),
@@ -197,7 +197,7 @@ module EF_I2S_WB #(
 			_sdi_reg_[0] <= sdi;
 			_sdi_reg_[1] <= _sdi_reg_[0];
 		end
-	EF_I2S #(
+	CF_I2S #(
 		.DW(DW),
 		.AW(AW)
 	) instance_to_wrap (

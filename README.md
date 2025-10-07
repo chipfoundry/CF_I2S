@@ -1,4 +1,4 @@
-# EF_I2S
+# CF_I2S
 
 Two-wire I2S synchronous serial interface, compatible with I2S specification.
 ## The wrapped IP
@@ -10,7 +10,7 @@ Two-wire I2S synchronous serial interface, compatible with I2S specification.
 
 Based on your use case, use one of the provided wrappers or create a wrapper for your system bus type. For an example of how to integrate the wishbone wrapper:
 ```verilog
-EF_I2S_WB INST (
+CF_I2S_WB INST (
 	.clk_i(clk_i),
 	.rst_i(rst_i),
 	.adr_i(adr_i),
@@ -40,13 +40,13 @@ This IP generates interrupts on specific events, which are described in the [Int
 
 ## Implementation example  
 
-The following table is the result for implementing the EF_I2S IP with different wrappers using Sky130 HD library and [OpenLane2](https://github.com/efabless/openlane2) flow.
+The following table is the result for implementing the CF_I2S IP with different wrappers using Sky130 HD library and [OpenLane2](https://github.com/chipfoundry/openlane2) flow.
 |Module | Number of cells | Max. freq |
 |---|---|---|
-|EF_I2S|2433| 116 |
-|EF_I2S_APB|2716|142|
-|EF_I2S_AHBL|2799|135|
-|EF_I2S_WB|2941|136|
+|CF_I2S|2433| 116 |
+|CF_I2S_APB|2716|142|
+|CF_I2S_AHBL|2799|135|
+|CF_I2S_WB|2941|136|
 ## The Programmer's Interface
 
 
@@ -177,33 +177,33 @@ The following are the bit definitions for the interrupt registers:
 |4|ZCRF|1|The ZCR is above the threshold.|
 |5|VADF|1|The Voice Activity Detector flag; active when both ZCR & AVG flags are active.|
 ### Clock Gating
-The IP includes a clock gating feature that allows selective activation and deactivation of the clock using the ``GCLK`` register. This capability is implemented through the ``ef_util_gating_cell`` module, which is part of the common modules library, [ef_util_lib.v](https://github.com/efabless/EF_IP_UTIL/blob/main/hdl/ef_util_lib.v). By default, the clock gating is disabled. To enable behavioral implmentation clock gating, only for simulation purposes, you should define the ``CLKG_GENERIC`` macro. Alternatively, define the ``CLKG_SKY130_HD`` macro if you wish to use the SKY130 HD library clock gating cell, ``sky130_fd_sc_hd__dlclkp_4``.
+The IP includes a clock gating feature that allows selective activation and deactivation of the clock using the ``GCLK`` register. This capability is implemented through the ``ef_util_gating_cell`` module, which is part of the common modules library, [cf_util_lib.v](https://github.com/chipfoundry/CF_IP_UTIL/blob/main/hdl/cf_util_lib.v). By default, the clock gating is disabled. To enable behavioral implmentation clock gating, only for simulation purposes, you should define the ``CLKG_GENERIC`` macro. Alternatively, define the ``CLKG_SKY130_HD`` macro if you wish to use the SKY130 HD library clock gating cell, ``sky130_fd_sc_hd__dlclkp_4``.
 
-**Note:** If you choose the [OpenLane2](https://github.com/efabless/openlane2) flow for implementation and would like to enable the clock gating feature, you need to add ``CLKG_SKY130_HD`` macro to the ``VERILOG_DEFINES`` configuration variable. Update OpenLane2 YAML configuration file as follows: 
+**Note:** If you choose the [OpenLane2](https://github.com/chipfoundry/openlane2) flow for implementation and would like to enable the clock gating feature, you need to add ``CLKG_SKY130_HD`` macro to the ``VERILOG_DEFINES`` configuration variable. Update OpenLane2 YAML configuration file as follows: 
 ```
 VERILOG_DEFINES:
 - CLKG_SKY130_HD
 ```
 ## Firmware Drivers:
-Firmware drivers for EF_I2S can be found in the [Drivers](https://github.com/efabless/EFIS/tree/main/Drivers) directory in the [EFIS](https://github.com/efabless/EFIS) (Efabless Firmware Interface Standard) repo. EF_I2S driver documentation  is available [here](https://github.com/efabless/EFIS/blob/main/Drivers/Docs/EF_I2S/README.md).
-You can also find an example C application using the EF_I2S drivers [here](https://github.com/efabless/EFIS/tree/main/Drivers/Docs/EF_I2S/example).
+Firmware drivers for CF_I2S can be found in the [Drivers](https://github.com/chipfoundry/EFIS/tree/main/Drivers) directory in the [EFIS](https://github.com/chipfoundry/EFIS) (Chipfoundry Firmware Interface Standard) repo. CF_I2S driver documentation  is available [here](https://github.com/chipfoundry/EFIS/blob/main/Drivers/Docs/CF_I2S/README.md).
+You can also find an example C application using the CF_I2S drivers [here](https://github.com/chipfoundry/EFIS/tree/main/Drivers/Docs/CF_I2S/example).
 ## Installation:
-You can install the IP either by cloning this repository or by using [IPM](https://github.com/efabless/IPM).
-### 1. Using [IPM](https://github.com/efabless/IPM):
-- [Optional] If you do not have IPM installed, follow the installation guide [here](https://github.com/efabless/IPM/blob/main/README.md)
-- After installing IPM, execute the following command ```ipm install EF_I2S```.
-> **Note:** This method is recommended as it automatically installs [EF_IP_UTIL](https://github.com/efabless/EF_IP_UTIL.git) as a dependency.
+You can install the IP either by cloning this repository or by using [IPM](https://github.com/chipfoundry/IPM).
+### 1. Using [IPM](https://github.com/chipfoundry/IPM):
+- [Optional] If you do not have IPM installed, follow the installation guide [here](https://github.com/chipfoundry/IPM/blob/main/README.md)
+- After installing IPM, execute the following command ```ipm install CF_I2S```.
+> **Note:** This method is recommended as it automatically installs [EF_IP_UTIL](https://github.com/chipfoundry/EF_IP_UTIL.git) as a dependency.
 ### 2. Cloning this repo: 
-- Clone [EF_IP_UTIL](https://github.com/efabless/EF_IP_UTIL.git) repository, which includes the required modules from the common modules library, [ef_util_lib.v](https://github.com/efabless/EF_IP_UTIL/blob/main/hdl/ef_util_lib.v).
-```git clone https://github.com/efabless/EF_IP_UTIL.git```
+- Clone [EF_IP_UTIL](https://github.com/chipfoundry/EF_IP_UTIL.git) repository, which includes the required modules from the common modules library, [ef_util_lib.v](https://github.com/chipfoundry/EF_IP_UTIL/blob/main/hdl/ef_util_lib.v).
+```git clone https://github.com/chipfoundry/EF_IP_UTIL.git```
 - Clone the IP repository
-```git clone github.com/efabless/EF_I2S```
+```git clone github.com/chipfoundry/CF_I2S```
 
 ### The Wrapped IP Interface 
 
 >**_NOTE:_** This section is intended for advanced users who wish to gain more information about the interface of the wrapped IP, in case they want to create their own wrappers.
 
-<img src="docs/_static/EF_I2S.svg" width="600"/>
+<img src="docs/_static/CF_I2S.svg" width="600"/>
 
 #### Module Parameters 
 

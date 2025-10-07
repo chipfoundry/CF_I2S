@@ -16,7 +16,7 @@ module top();
         wire [31:0]	PWDATA;
         wire [31:0]	PRDATA;
         wire 		PREADY;
-        EF_I2S_APB uut(
+        CF_I2S_APB uut(
             .ws(ws),
             .sck(sck),
             .sdi(sdi),
@@ -41,7 +41,7 @@ module top();
         wire [31:0]	HWDATA;
         wire [31:0]	HRDATA;
         wire 		HREADY;
-        EF_I2S_AHBL uut(
+        CF_I2S_AHBL uut(
             .ws(ws),
             .sck(sck),
             .sdi(sdi),
@@ -67,7 +67,7 @@ module top();
         wire        stb_i;
         reg         ack_o;
         
-        EF_I2S_WB dut(
+        CF_I2S_WB dut(
             .ws(ws),
             .sck(sck),
             .sdi(sdi),

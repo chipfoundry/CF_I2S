@@ -1,17 +1,21 @@
 /*
-	Copyright 2023 Efabless Corp.
+	Copyright 2024-2025 ChipFoundry, a DBA of Umbralogic Technologies LLC.
 
-	Author: Mohamed Shalan (mshalan@efabless.com)
-	
-	Licensed under the Apache License, Version 2.0 (the "License"); 
-	you may not use this file except in compliance with the License. 
-	You may obtain a copy of the License at:
-	http://www.apache.org/licenses/LICENSE-2.0
-	Unless required by applicable law or agreed to in writing, software 
-	distributed under the License is distributed on an "AS IS" BASIS, 
-	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
-	See the License for the specific language governing permissions and 
+	Original Copyright 2024 Efabless Corp.
+	Author: Efabless Corp. (ip_admin@efabless.com)
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	    http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
 	limitations under the License.
+
 */
 
 `default_nettype        none
@@ -91,7 +95,7 @@ module i2s_rx (
 endmodule
 
 
-module EF_I2S #(parameter DW=32, AW=4) (
+module CF_I2S #(parameter DW=32, AW=4) (
     input   wire            clk,
     input   wire            rst_n,
 
@@ -252,7 +256,7 @@ module EF_I2S #(parameter DW=32, AW=4) (
         .rdy(sample_rdy)
     );
 
-    ef_util_fifo #(.DW(DW), .AW(AW)) I2SFIFO (
+    cf_util_fifo #(.DW(DW), .AW(AW)) I2SFIFO (
         .clk(clk),
         .rst_n(rst_n),
         // .clr(fifo_clr),
