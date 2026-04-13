@@ -50,10 +50,9 @@ class i2s_cov_groups:
         _s(tr)
 
     def sample_bus(self, tr):
-        if tr.kind == bus_item.READ:
-            rname = self.regs._reg_address_to_name.get(tr.addr)
-            if rname:
-                self.regs._reg_values[rname.lower()] = tr.data
+        rname = self.regs._reg_address_to_name.get(tr.addr)
+        if rname:
+            self.regs._reg_values[rname.lower()] = tr.data
 
         @self._apply_decorators(
             self.auto_points + self.fifo_cov + self.flag_cov + self.mode_cov
@@ -100,6 +99,7 @@ class i2s_cov_groups:
                 bins=[(8, 8), (16, 16), (24, 24), (32, 32)],
                 bins_labels=["8bit", "16bit", "24bit", "32bit"],
                 at_least=1,
+                rel=lambda val, b: b[0] <= val <= b[1],
             ),
         ]
 
@@ -167,6 +167,7 @@ class i2s_cov_groups:
                 bins=[(0, 3), (4, 15), (16, 63), (64, 255)],
                 bins_labels=["low", "med", "high", "very_high"],
                 at_least=1,
+                rel=lambda val, b: b[0] <= val <= b[1],
             ),
         ]
 

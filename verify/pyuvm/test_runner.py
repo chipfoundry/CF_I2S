@@ -45,6 +45,7 @@ TESTS = [
     "FIFOTest",
     "InterruptTest",
     "SampleSizeTest",
+    "CoverageClosureTest",
 ]
 
 
