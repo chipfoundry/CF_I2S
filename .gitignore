@@ -55,3 +55,14 @@ a.out
 .out
 .vcd
 gl
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Simulation
+verify/pyuvm/sim/
+
+# macOS
+.DS_Store
