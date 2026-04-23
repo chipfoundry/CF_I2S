@@ -32,6 +32,7 @@ class i2s_item(uvm_sequence_item):
         return (
             self.sample_data == rhs.sample_data
             and self.channel == rhs.channel
+            and self.sample_size == rhs.sample_size
         )
 
     def do_copy(self, rhs):

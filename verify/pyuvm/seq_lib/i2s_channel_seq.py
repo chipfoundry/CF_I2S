@@ -4,7 +4,7 @@ from pyuvm import uvm_sequence, ConfigDB
 
 from cocotb.triggers import ClockCycles
 
-from cf_verify.bus_env.bus_seq_lib import write_reg_seq, read_reg_seq
+from cf_verify.bus_env.bus_seq_lib import write_reg_seq, read_reg_seq, reset_seq
 from seq_lib.i2s_config_seq import i2s_config_seq
 
 
@@ -12,6 +12,7 @@ class i2s_left_channel_seq(uvm_sequence):
     """Configure for left-channel-only reception and read samples."""
 
     async def body(self):
+        await reset_seq("rst").start(self.sequencer)
         regs = ConfigDB().get(None, "", "bus_regs")
         addr = regs.reg_name_to_address
         dut = ConfigDB().get(None, "", "DUT")
@@ -33,6 +34,7 @@ class i2s_right_channel_seq(uvm_sequence):
     """Configure for right-channel-only reception and read samples."""
 
     async def body(self):
+        await reset_seq("rst").start(self.sequencer)
         regs = ConfigDB().get(None, "", "bus_regs")
         addr = regs.reg_name_to_address
         dut = ConfigDB().get(None, "", "DUT")
@@ -54,6 +56,7 @@ class i2s_stereo_seq(uvm_sequence):
     """Configure for stereo reception and read samples."""
 
     async def body(self):
+        await reset_seq("rst").start(self.sequencer)
         regs = ConfigDB().get(None, "", "bus_regs")
         addr = regs.reg_name_to_address
         dut = ConfigDB().get(None, "", "DUT")

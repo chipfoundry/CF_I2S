@@ -32,12 +32,12 @@ module top();
         wire        HRESETn = RESETn;
         wire [31:0] HADDR;
         wire        HWRITE;
-        wire        HSEL = 0;
+        reg         HSEL = 0;
         wire        HREADYOUT;
-        wire [1:0]  HTRANS = 0;
+        reg  [1:0]  HTRANS = 0;
         wire [31:0] HWDATA;
         wire [31:0] HRDATA;
-        wire        HREADY;
+        reg         HREADY = 1;
         CF_I2S_AHBL dut(
             .ws(ws), .sck(sck), .sdi(SDI),
             .HCLK(HCLK), .HRESETn(HRESETn),
