@@ -1,10 +1,10 @@
 # CF_I2S
 
 [![Verification](https://github.com/chipfoundry/CF_I2S/actions/workflows/verify.yaml/badge.svg)](https://github.com/chipfoundry/CF_I2S/actions/workflows/verify.yaml)
-![Tests](https://img.shields.io/endpoint?url=https://chipfoundry.github.io/CF_I2S/badges/verification.json)
-![Functional Coverage](https://img.shields.io/endpoint?url=https://chipfoundry.github.io/CF_I2S/badges/func-coverage.json)
-![Line Coverage](https://img.shields.io/endpoint?url=https://chipfoundry.github.io/CF_I2S/badges/line-coverage.json)
-![Branch Coverage](https://img.shields.io/endpoint?url=https://chipfoundry.github.io/CF_I2S/badges/branch-coverage.json)
+![Tests](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/chipfoundry/CF_I2S/gh-pages/badges/verification.json)
+![Functional Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/chipfoundry/CF_I2S/gh-pages/badges/func-coverage.json)
+![Line Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/chipfoundry/CF_I2S/gh-pages/badges/line-coverage.json)
+![Branch Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/chipfoundry/CF_I2S/gh-pages/badges/branch-coverage.json)
 
 Two-wire I2S synchronous serial interface, compatible with I2S specification.
 ## The wrapped IP
